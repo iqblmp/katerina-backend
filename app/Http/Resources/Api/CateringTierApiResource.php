@@ -14,6 +14,16 @@ class CateringTierApiResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'price' => $this->price,
+            'quantity' => $this->quantity,
+            'duration' => $this->duration,
+            'photo' => $this->photo,
+
+            'cateringPackage' => new CateringPackageApiResource($this->whenLoaded('cateringPackage')),
+            'benefits' => TierBenefitApiResource::collection($this->whenLoaded('benefits')),
+        ];
     }
 }

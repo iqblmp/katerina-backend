@@ -14,6 +14,13 @@ class CateringTestimonialApiResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'photo' => $this->photo,
+            'message' => $this->message,
+
+            'cateringPackage' => new CateringPackageApiResource($this->whenLoaded('cateringPackage')),
+        ];
     }
 }
