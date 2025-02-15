@@ -23,7 +23,7 @@ class CateringPackageApiResource extends JsonResource
             'about' => $this->about,
 
             'city' => new CityApiResource($this->whenLoaded('city')),
-            'categoty' => new CategoryApiResource($this->whenLoaded('category')),
+            'category' => new CategoryApiResource($this->whenLoaded('category')),
             'kitchen' => new KitchenApiResource($this->whenLoaded('kitchen')),
 
             'photos' => CateringPhotoApiResource::collection($this->whenLoaded('photos')),
